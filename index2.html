@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>  
+
+</head>
+<body>
+    <center>
+    <h1 id = "result">Your answer will shown here</h1>
+    <img src = " https://qph.fs.quoracdn.net/main-qimg-148ae81e6fe0500e130fb547026a9b26-lq" id = "tails" style = "display: none" />
+    <img src = " https://qph.fs.quoracdn.net/main-qimg-9c81a54813716fccd8e3608ab2f51dcf-lq" id = "heads" style = "display : none"/>
+    </center>
+    <div id = "app"></div>
+    <script type = "text/babel">
+        var h = document.getElementById("heads")
+        var t = document.getElementById("tails")
+         let change  = 3.14
+         let changevalue  = change / 7
+   class App extends React.Component {
+        constructor(props){
+            super(props);
+            this.state = {
+                tail_count: 0,
+                head_count: 0
+            };
+             
+        }
+       
+        render(){
+            return(
+               
+             <div>
+             <center><br/>
+             <button onClick = {this.CoinFlip}>Spin</button>
+             <h3>Number of times tail came : {this.state.tail_count}</h3>
+            <h3>Number of times head came : {this.state.head_count}</h3>
+             <br/>
+   </center>
+                </div>
+               
+                )
+        }
+        
+            
+                CoinFlip = () => {
+
+                    let x = Math.floor((Math.random() * 10) + 1);
+                        if(x % 2 == 0){
+                            document.getElementById("result").innerHTML = "Tails";
+                            t.style.display = "block";
+                            h.style.display = "none"
+                             this.setState({
+                                 tail_count: this.state.tail_count+1
+                             })
+                        }
+                        else {
+                            document.getElementById("result").innerHTML = "Heads";
+                            h.style.display = "block";
+                            t.style.display = "none";
+                            this.setState({
+                                head_count : this.state.head_count+1
+                            })
+                            //head
+                        }
+                       
+                            
+                
+        }
+    }
+      
+ReactDOM.render(<App/> , document.querySelector("#app"))
+
+     
+    </script>
+
+</body>
+</html>
